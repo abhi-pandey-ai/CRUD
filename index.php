@@ -50,7 +50,7 @@
       <h2 class="form-title">Create an account</h2>
       <h2 id="successMsg"> </h2>   
       
-      <form method="POST">
+      
         <div class="row mb-3">
           <div class="col">
             <label for="firstName" class="form-label">First Name *</label>
@@ -101,10 +101,10 @@
         <button type="submit" id="btn" class="btn btn-register text-white" style="width:200px; border-radius: 50px 20px;" >Register</button>
         </div>
         
-      </form>
     </div>
     <script>
         $(document).ready(function(){
+        // preventDefault();
             $("#btn").click(function() {
                 var name  = $("#name").val();
                 var lname = $("#lname").val();
@@ -183,10 +183,11 @@
                         location : location
                     },
                     success : function(data) {
-                      console.log(data);
-                        if(data == "data inserted successfully") {
-                            console.log(data);
-                            // alert(data);
+                      // console.log(data);
+                      if(data == "data inserted successfully"){
+                        console.log(data);
+                        // return false;
+                            alert(data);
                             $("#successMsg").text(data);
     
                             setTimeout(() => {
@@ -197,13 +198,12 @@
     
                             setTimeout(() => {
                                 $("#successMsg").text("");
-                            }, 5000);
+                            }, 3000);
                           }
                           window.location.href = "view.php";
                     }
-                });
-                return true;
-
+                  });      
+                return true;  
             });
         });
 

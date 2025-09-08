@@ -1,6 +1,6 @@
 <?php
     include_once("conn.php");
-    // print_r(POST);
+   
     $Name = $_POST["name"];
     $Lname = $_POST["lname"];
     $Email = $_POST["email"];
@@ -9,7 +9,9 @@
     $BusinessCategory = $_POST["businessCategory"];
     $Location = $_POST["location"];
 
-    $query = "INSERT INTO `testfile` (`Name`, `Lname`, `Email`, `Phone`, `Company`, `BusinessCategory`, `Location`) VALUES ('$Name', '$Lname', '$Email', '$Phone', '$Company', '$BusinessCategory', '$Location')";
+    $query = "INSERT INTO `testfile` (`name`, `lname`, `email`, `phone`, `company`, `business_category`, `location`) VALUES ('$Name', '$Lname', '$Email', '$Phone', '$Company', '$BusinessCategory', '$Location')";
+    //  print_r($query);
+    // die;
 
     $data = mysqli_query($conn,$query);
     if($data){
