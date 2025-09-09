@@ -41,7 +41,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Update Record</h5>
+        <h5 class="modal-title" id="title">Update Record</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
@@ -82,7 +82,7 @@
             <input type="text" id="update-location" name="location" class="form-control">
           </div>
 
-          <button type="submit"  class="btn btn-success update ">Save Changes</button>
+          <button type="submit" id="Modal-button"  class="btn btn-success update ">Save Changes</button>
       </div>
     </div>
   </div>
@@ -183,6 +183,34 @@
             }
           }
         });
+      });
+      // view data part 
+      $(document).on("click", ".view-btn",function(){
+        var id = $(this).data ("id");
+        $.ajax({
+          url : "fetchSingle.php",
+          type : "POST",
+          data : {id : id} ,
+          dataType : "json",
+          success : function(data){
+            $("#update-name").val(data.name);
+            $("#update-lname").val(data.lname);
+            $("#update-email").val(data.email);
+            $("#update-phone").val(data.phone);
+            $("#update-business").val(data.business_category);
+            $("#update-company").val(data.company);
+            $("#update-location").val(data.location);
+            $("#updateModal").modal("show");
+            $("#title").text("User Data");
+            $("#Modal-button").remove();
+
+
+            
+            
+
+          }
+
+        })
       });
 
     </script>

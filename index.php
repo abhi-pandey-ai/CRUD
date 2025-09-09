@@ -104,19 +104,32 @@
     </div>
     <script>
         $(document).ready(function(){
-        // preventDefault();
-            $("#btn").click(function() {
-                var name  = $("#name").val();
-                var lname = $("#lname").val();
-                var email = $("#email").val();
-                var phone = $("#phone").val();
-                var company = $("#company").val();
+            $("#btn").click(function(e) {
+                e.preventDefault();
+                var name  = $("#name").val() .trim();
+                var lname = $("#lname").val() .trim();
+                var email = $("#email").val() .trim();
+                var phone = $("#phone").val() .trim();
+                var company = $("#company").val() .trim();
                 var businessCategory = $("#businessCategory").val();
                 var location = $("#location").val();
+
+                if(name ==="" && lname ==="" && email ==="" && phone ==="" && company ==="" && businessCategory ==="" && location ==="" ){
+                  $("#nameErr").text("Enter your Name");
+                  $("#lnameErr").text("Enter your Lastname");
+                  $("#emailErr").text("Enter your valid Email");
+                  $("#phoneErr").text("Enter phone Number");
+                  $("#companyErr").text("Enter your company");
+                  $("#businessCategoryErr").text("Enter your businessCategory");
+                  $("#locationErr").text("Enter your current location");
+                  return false;
+                }
 
                 if(name == ""){
                     $("#nameErr").text("Enter your Name");
                     return false;
+                } else if(name.length<2){ 
+                    $("#nameErr").text("Enter valid name");
                 } else{
                     $("#nameErr").text("");
                 }
@@ -190,20 +203,20 @@
                             alert(data);
                             $("#successMsg").text(data);
     
-                            setTimeout(() => {
-                                $("#successMsg").text("");
-                            }, 3000);
-                        } else {
-                            $("#successMsg").text("Something went wrong");
+                            // setTimeout(() => {
+                            //     $("#successMsg").text("");
+                            // }, 3000);
+                        }
+                        //  else {
+                        //     $("#successMsg").text("Something went wrong");
     
-                            setTimeout(() => {
-                                $("#successMsg").text("");
-                            }, 3000);
-                          }
+                        //     setTimeout(() => {
+                        //         $("#successMsg").text("");
+                        //     }, 3000);
+                        //   }
                           window.location.href = "view.php";
                     }
-                  });      
-                return true;  
+                  });        
             });
         });
 

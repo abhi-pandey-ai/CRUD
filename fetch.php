@@ -7,9 +7,10 @@
     // print_r(mysqli_fetch_all($result));die;
     
     if(mysqli_num_rows($result) > 0){
+        $sn = 1;
         while($row = mysqli_fetch_assoc($result)){
             echo "<tr>
-                    <td>".$row['id']."</td>
+                    <td>".$sn++."</td>
                     <td>".$row['name']."</td>
                     <td>".$row['lname']."</td>
                     <td>".$row['email']."</td>
@@ -18,8 +19,9 @@
                     <td>".$row['business_category']."</td>
                     <td>".$row['location']."</td>
                     <td>
-                        <a class=update-btn data-id=".$row["id"]. ">update</a>
-                        <a class=delete-btn data-id=".$row["id"] .">delete</a>
+                        <a class=view-btn data-id=".$row["id"]."><i class='text-warning bi bi-eye' ></i></a>
+                        <a class=update-btn data-id=".$row["id"]. "><i class='bi bi-pencil-square'></i></a>
+                        <a class=delete-btn data-id=".$row["id"] ."><i class='text-danger bi bi-trash-fill'></i></a>
                     </td>
                 </tr>";  
             }
